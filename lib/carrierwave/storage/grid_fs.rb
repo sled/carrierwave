@@ -94,7 +94,7 @@ module CarrierWave
         end
 
         def grid
-          @grid ||= Mongo::GridFileSystem.new(database)
+          @grid ||= Mongo::GridFileSystem.new(database, (@uploader.respond_to?(:grid_fs_namespace) ? @uploader.grid_fs_namespace : Mongo::Grid::DEFAULT_FS_NAME))
         end
 
       end
